@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from "./src/views/Home";
 
-import Record from "./src/views/RECORD";
+import Record from "./src/views/Record";
 
 import License from "./src/views/License";
 
