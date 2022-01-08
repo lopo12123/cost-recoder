@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ScrollView, StyleSheet, Text, View, Linking } from "react-native";
+import { ScrollView, StyleSheet, Text, View, Linking, Alert } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
@@ -32,14 +32,16 @@ const License = () => {
                           Linking.canOpenURL(url)
                               .then((support) => {
                                   if(!support) {
-                                      console.log('not support');
+                                      Alert.alert('fail to open default browser')
                                   }
                                   else {
                                       return Linking.openURL(url);
                                   }
                               })
                               .catch((err) => {
-                                  if(err) console.log(err);
+                                  if(err) {
+                                      Alert.alert("fail to open default browser");
+                                  }
                               })
                       }}>
                     View More About MIT License.
