@@ -15,8 +15,8 @@ const styles = StyleSheet.create({
         fontSize: 24,
     },
     innerView: {
-        width: '100%',
-        height: '100%',
+        flex: 1,
+        backgroundColor: 'transparent',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
