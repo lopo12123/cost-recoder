@@ -1,9 +1,9 @@
 import React from "react";
 
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View, Linking } from "react-native";
 
 const styles = StyleSheet.create({
-    License: {
+    container: {
         flex: 1,
         padding: 20,
     }
@@ -17,14 +17,32 @@ const mitText = "MIT License\n" +
     "\n" +
     "The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies or substantial portions of the Software.\n" +
     "\n" +
-    "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+    "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
 
 const License = () => {
     return (
-        <View style={styles.License}>
+        <View style={styles.container}>
             <ScrollView>
                 <Text>
                     { mitText }
+                </Text>
+                <Text style={{ color: '#409eff', textDecorationLine: 'underline' }}
+                      onPress={() => {
+                          const url = 'https://spdx.org/licenses/MIT'
+                          Linking.canOpenURL(url)
+                              .then((support) => {
+                                  if(!support) {
+                                      console.log('not support');
+                                  }
+                                  else {
+                                      return Linking.openURL(url);
+                                  }
+                              })
+                              .catch((err) => {
+                                  if(err) console.log(err);
+                              })
+                      }}>
+                    View More About MIT License.
                 </Text>
             </ScrollView>
         </View>
