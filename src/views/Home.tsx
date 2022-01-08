@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         color: 'red',
         elevation: 5,
     },
-    export: {
+    output: {
         width: '70%',
         height: '15%',
         borderStyle: 'solid',
@@ -68,7 +68,7 @@ const Home = ({ navigation }: any) => {
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.export}>
+            <TouchableOpacity style={styles.output}>
                 <View style={styles.innerView}
                       onTouchEnd={() => {
                           Alert.alert('😅', 'Sorry!\nBut this part is not finished yet.')
