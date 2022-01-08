@@ -32,7 +32,7 @@ const License = () => {
                           Linking.canOpenURL(url)
                               .then((support) => {
                                   if(!support) {
-                                      Alert.alert('fail to open default browser')
+                                      Alert.alert('fail to open default browser', 'fail to open default browser')
                                   }
                                   else {
                                       return Linking.openURL(url);
@@ -40,7 +40,7 @@ const License = () => {
                               })
                               .catch((err) => {
                                   if(err) {
-                                      Alert.alert("fail to open default browser");
+                                      Alert.alert("fail to open default browser", err);
                                   }
                               })
                       }}>
