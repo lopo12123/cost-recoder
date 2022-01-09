@@ -1,51 +1,34 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 
+import { ScrollView, StyleSheet } from "react-native";
+
+// @ts-ignore
+import AntIcon from 'react-native-vector-icons/AntDesign'
+
+import Card from "../components/Record/Card";
 
 const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-evenly'
+        padding: 20,
+        backgroundColor: '#eeeeee',
     },
-    chart: {
-        width: '70%',
-        height: '60%',
-        backgroundColor: '#cccccc',
-        borderRadius: 5,
-        display: 'flex',  // todo
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    operate: {
-        width: '70%',
-        height: '15%',
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between'
-    },
-    inBtn: {
-
-    },
-    outBtn: {
-
-    }
 })
+
+const AlipayIcon = () => { return <AntIcon name="alipay-circle" size={30} color="#409eff" /> }
+const WeChatIcon = () => { return <AntIcon name="wechat" size={30} color="#67c23a" /> }
+const BankIcon = () => { return <AntIcon name="bank" size={30} color="#e6a23c" /> }
+const CashIcon = () => { return <AntIcon name="wallet" size={30} color="#f56c6c" /> }
 
 const Record = () => {
     return (
-        <View style={styles.container}>
-            <View style={styles.chart}>
-                <Text>Here will show last week`s record</Text>
-            </View>
-            <View style={styles.operate}>
-                <Text>IN</Text>
-                <Text>OUT</Text>
-            </View>
-        </View>
+        <ScrollView style={styles.container}>
+            <Card title="Alipay" icon={<AlipayIcon/>} />
+            <Card title="WeChat" icon={<WeChatIcon/>} />
+            <Card title="Bank Card" icon={<BankIcon/>} />
+            <Card title="Cash in Pocket" icon={<CashIcon/>} />
+        </ScrollView>
     )
 }
 

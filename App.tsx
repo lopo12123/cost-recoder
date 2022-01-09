@@ -4,8 +4,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // @ts-ignore
-import AntIcon from 'react-native-vector-icons/AntDesign'
-// @ts-ignore
 import AweIcon from 'react-native-vector-icons/FontAwesome'
 
 import Record from "./src/views/Record";
@@ -14,9 +12,9 @@ import Settings from './src/views/Settings';
 
 const Tab = createBottomTabNavigator();
 
-const RecordIcon = ({ focused }: { focused: boolean }) => { return <AntIcon name="plus" size={20} color={focused ? "#4f8ef7" : "#999999"} /> }
-const OverviewIcon = ({ focused }: { focused: boolean }) => { return <AweIcon name="line-chart" size={20} color={focused ? "#4f8ef7" : "#999999"} /> }
-const SettingIcon = ({ focused }: { focused: boolean }) => { return <AntIcon name="setting" size={20} color={focused ? "#4f8ef7" : "#999999"} /> }
+const RecordIcon = ({ focused }: { focused: boolean }) => { return <AweIcon name="money" size={20} color={focused ? "#4f8ef7" : "#999999"} /> }
+const OverviewIcon = ({ focused }: { focused: boolean }) => { return <AweIcon name="bar-chart" size={20} color={focused ? "#4f8ef7" : "#999999"} /> }
+const SettingIcon = ({ focused }: { focused: boolean }) => { return <AweIcon name="gears" size={20} color={focused ? "#4f8ef7" : "#999999"} /> }
 
 const App = () => {
     return (
