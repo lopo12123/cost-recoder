@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import {
     StyleSheet,
     Text,
@@ -6,6 +8,7 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+
 
 const styles = StyleSheet.create({
     container: {
@@ -100,8 +103,8 @@ const RecordDialog = (props: { title: 'Alipay' | 'WeChat' | 'Bank Card' | 'Cash 
                             ToastAndroid.show('your input is not a number!', ToastAndroid.SHORT)
                         }
                         else {
-                            ToastAndroid.show('hello', 500)
-                            console.log(props.title, props.inout);
+                            ToastAndroid.show('success (todo)', ToastAndroid.SHORT)
+                            console.log(props.title, props.inout, value);
                             props.toClose()
                         }
                     }} />
