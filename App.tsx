@@ -7,30 +7,22 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from 'react-native-vector-icons/AntDesign'  // @ts-ignore
 
 import Record from "./src/views/Record";
-import OverView from "./src/views/OverView";
-import License from "./src/views/License";
+import Overview from "./src/views/Overview";
+import Settings from './src/views/Settings';
 
 const Tab = createBottomTabNavigator();
 
-const RecordIcon = () => {
-    return (
-        <Icon name="rocket" size={20} color="#4f8ef7" />
-    )
-}
+const RecordIcon = ({ focused }: { focused: boolean }) => { return <Icon name="plus" size={20} color={focused ? "#4f8ef7" : "#999999"} /> }
+const OverviewIcon = ({ focused }: { focused: boolean }) => { return <Icon name="eyeo" size={20} color={focused ? "#4f8ef7" : "#999999"} /> }
+const SettingIcon = ({ focused }: { focused: boolean }) => { return <Icon name="setting" size={20} color={focused ? "#4f8ef7" : "#999999"} /> }
 
 const App = () => {
     return (
         <NavigationContainer>
-            <Tab.Navigator initialRouteName="Home"
-                           screenOptions={{
-                               headerShown: false,
-                               tabBarIcon: () => {
-                                   return <Icon name="stepforward" size={20} color="red" />
-                               }
-                           }}>
-                <Tab.Screen name="Record" component={Record}/>
-                <Tab.Screen name="OverView" component={OverView} />
-                <Tab.Screen name="License" component={License} />
+            <Tab.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+                <Tab.Screen name="Record" component={Record} options={{ tabBarIcon: RecordIcon }} />
+                <Tab.Screen name="Overview" component={Overview} options={{ tabBarIcon: OverviewIcon }} />
+                <Tab.Screen name="Settings" component={Settings} options={{ tabBarIcon: SettingIcon }} />
             </Tab.Navigator>
         </NavigationContainer>
     );

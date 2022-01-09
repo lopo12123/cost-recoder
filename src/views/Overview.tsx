@@ -3,7 +3,7 @@ import React from "react";
 import { Text, View } from "react-native";
 
 
-const OverView = () => {
+const Overview = () => {
     return (
         <View>
             <Text>over view here</Text>
@@ -11,4 +11,4 @@ const OverView = () => {
     )
 }
 
-export default OverView;
+export default Overview;
