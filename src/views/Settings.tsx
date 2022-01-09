@@ -1,14 +1,18 @@
 import React from "react";
 
-import { ScrollView, StyleSheet, Text, View, Linking, Alert } from "react-native";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+
+import SettingsHome from "../components/Settings/SettingsHome";
+import License from "../components/Settings/License";
+
+const SettingTab = createNativeStackNavigator();
 
 const Settings = () => {
     return (
-        <View>
-            <Text>
-                settings here
-            </Text>
-        </View>
+        <SettingTab.Navigator initialRouteName="SettingsHome">
+            <SettingTab.Screen name="SettingsHome" component={SettingsHome} options={{ headerShown: false }} />
+            <SettingTab.Screen name="License" component={License} />
+        </SettingTab.Navigator>
     )
 }
 
