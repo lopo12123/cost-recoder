@@ -1,12 +1,20 @@
 import React from "react";
 
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
+})
 
 const Overview = () => {
     return (
-        <View>
-            <Text>over view here</Text>
+        <View style={styles.container}>
+            <Text>得加钱</Text>
         </View>
     )
 }
