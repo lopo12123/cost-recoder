@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Alert, Linking, StyleSheet, View } from "react-native";
+import { Linking, StyleSheet, ToastAndroid, View } from "react-native";
 
 // @ts-ignore
 import AweIcon from 'react-native-vector-icons/FontAwesome'
@@ -28,10 +28,10 @@ const SettingsHome = ({navigation}: any) => {
     return (
         <View style={styles.container}>
             <Card title="Check Update" icon={<UpdateIcon/>}
-                  onClick={() => { Alert.alert('Not Yet', 'you`d better ask the author instead.') }} />
+                  onClick={() => { ToastAndroid.show('Currently unavailable!', ToastAndroid.SHORT) }} />
 
             <Card title="Export in Excel" icon={<ExcelIcon/>}
-                  onClick={() => { Alert.alert('Not Yet', 'you`d better punch the author instead.') }} />
+                  onClick={() => { ToastAndroid.show('Currently unavailable!', ToastAndroid.SHORT) }} />
 
             <Card title="View License" icon={<LicenseIcon/>}
                   onClick={() => { navigation.navigate('License') }}/>
@@ -42,7 +42,7 @@ const SettingsHome = ({navigation}: any) => {
                       Linking.canOpenURL(url)
                           .then((support) => {
                               if(!support) {
-                                  Alert.alert('fail to open default browser', 'fail to open default browser')
+                                  ToastAndroid.show('Fail to open default browser!', ToastAndroid.SHORT)
                               }
                               else {
                                   return Linking.openURL(url);
@@ -50,7 +50,7 @@ const SettingsHome = ({navigation}: any) => {
                           })
                           .catch((err) => {
                               if(err) {
-                                  Alert.alert("fail to open default browser", err);
+                                  ToastAndroid.show('Fail to open default browser!', ToastAndroid.SHORT)
                               }
                           })
                   }}/>
