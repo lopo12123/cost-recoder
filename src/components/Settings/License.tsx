@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ScrollView, StyleSheet, Text, View, Linking, Alert } from "react-native";
+import { ScrollView, StyleSheet, Text, View, Linking, ToastAndroid } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
@@ -32,7 +32,7 @@ const License = () => {
                           Linking.canOpenURL(url)
                               .then((support) => {
                                   if(!support) {
-                                      Alert.alert('fail to open default browser', 'fail to open default browser')
+                                      ToastAndroid.show('Fail to open default browser', ToastAndroid.SHORT)
                                   }
                                   else {
                                       return Linking.openURL(url);
@@ -40,7 +40,7 @@ const License = () => {
                               })
                               .catch((err) => {
                                   if(err) {
-                                      Alert.alert("fail to open default browser", err);
+                                      ToastAndroid.show('Fail to open default browser', ToastAndroid.SHORT)
                                   }
                               })
                       }}>
