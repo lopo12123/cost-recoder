@@ -8,6 +8,7 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+import { addRecordStoreItem, dateJs, RecordStoreName } from "../../scripts/store";
 
 
 const styles = StyleSheet.create({
@@ -74,8 +75,9 @@ const CustomButton = (props: { title: string, onClick: Function }) => {
     )
 }
 
-const RecordDialog = (props: { title: 'Alipay' | 'WeChat' | 'Bank Card' | 'Cash in pocket', inout: 'IN' | 'OUT', toClose: Function }) => {
+const RecordDialog = (props: { title: RecordStoreName, inout: 'IN' | 'OUT', toClose: Function }) => {
     const [value, setValue] = useState('')
+    const [note, setNote] = useState('')
 
     return (
         <View style={styles.container}>
@@ -93,9 +95,14 @@ const RecordDialog = (props: { title: 'Alipay' | 'WeChat' | 'Bank Card' | 'Cash 
                                "Enter the amount you " + (props.inout === 'IN' ? 'gain' : 'spent') + " here"
                            } />
 
+                <TextInput  style={styles.inputBox}
+                            value={note}
+                            onChangeText={(text) => { setNote(text) }}
+                            placeholder="Write a note for this record(if any)" />
+
                 <View style={styles.buttonGroup}>
                     <CustomButton title="no" onClick={props.toClose} />
-                    <CustomButton title="yes" onClick={() => {
+                    <CustomButton title="yes" onClick={async () => {
                         if(value.trim() === '') {
                             ToastAndroid.show('Your input is empty!', ToastAndroid.SHORT)
                         }
@@ -103,8 +110,21 @@ const RecordDialog = (props: { title: 'Alipay' | 'WeChat' | 'Bank Card' | 'Cash 
                             ToastAndroid.show('your input is not a number!', ToastAndroid.SHORT)
                         }
                         else {
-                            ToastAndroid.show('success (todo)', ToastAndroid.SHORT)
-                            console.log(props.title, props.inout, value);
+                            // TODO 1
+                            console.log(note);
+                            const result = await addRecordStoreItem(
+                                props.title,
+                                {
+                                    amount: parseFloat(value),
+                                    type: props.inout,
+                                    note: note,
+                                    createTime: Date.now(),
+                                    year: dateJs("YEAR"),
+                                    month: dateJs("MONTH"),
+                                    day: dateJs("DAY")
+                                }
+                            )
+                            ToastAndroid.show(result ? 'success' : 'fail', ToastAndroid.SHORT)
                             props.toClose()
                         }
                     }} />

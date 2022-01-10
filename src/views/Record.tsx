@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
-import { Alert, Modal, ScrollView, StyleSheet, Text } from "react-native";
+import { Button, Modal, ScrollView, StyleSheet } from "react-native";
 
 // @ts-ignore
 import AntIcon from 'react-native-vector-icons/AntDesign'
 
 import Card from "../components/Record/Card"
 import RecordDialog from '../components/Record/RecordDialog'
+import { getStoreObj, RecordStore, RecordStoreName } from "../scripts/store";
 
 const styles = StyleSheet.create({
     container: {
@@ -24,7 +25,7 @@ const CashIcon = () => { return <AntIcon name="wallet" size={30} color="#f56c6c"
 
 const Record = () => {
     const [visible, setVisible] = useState(false)
-    const [title, setTitle]: [('Alipay' | 'WeChat' | 'Bank Card' | 'Cash in pocket'), Function] = useState('Alipay')
+    const [title, setTitle]: [RecordStoreName, Function] = useState('Alipay')
     const [inout, setInout]: [('IN' | 'OUT'), Function] = useState('IN')
 
     const closeModel = () => {
@@ -53,17 +54,22 @@ const Record = () => {
 
             <Card title="Bank Card" icon={<BankIcon/>}
                   onClick={(type: 'IN' | 'OUT') => {
-                      setTitle('Bank Card')
+                      setTitle('Card')
                       setInout(type)
                       setVisible(true)
                   }} />
 
             <Card title="Cash in Pocket" icon={<CashIcon/>}
                   onClick={(type: 'IN' | 'OUT') => {
-                      setTitle('Cash in Pocket')
+                      setTitle('Cash')
                       setInout(type)
                       setVisible(true)
                   }} />
+
+            <Button title="show list" onPress={async () => {
+                const recordList = await getStoreObj('Alipay') as RecordStore
+                console.log(recordList[recordList.length - 1]);
+            }} />
         </ScrollView>
     )
 }
