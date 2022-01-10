@@ -18,7 +18,6 @@ const checkStores = async (): Promise<boolean> => {
                 if(!result) return false
             }
         }
-        console.log(currentStores);
         return true
     }
     catch (e) {
@@ -59,9 +58,30 @@ const createStore = async (storeName: StoreName): Promise<boolean> => {
     }
 }
 
+/**
+ * @description clear specific store (or all the store)
+ * @param name
+ */
+const clearStore = async (name: StoreName | 'All') => {
+    try {
+        if(name === 'All') {
+            await AsyncStorage.clear()
+            await checkStores()
+            return true
+        }
+        else {
+            await AsyncStorage.removeItem(name)
+            return true
+        }
+    }
+    catch (e) {
+        return false
+    }
+}
 
 
 
 export {
     checkStores,
+    clearStore,
 }
