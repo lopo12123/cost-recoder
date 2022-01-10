@@ -1,11 +1,12 @@
 import React from "react";
 
-import { Linking, StyleSheet, ToastAndroid, View } from "react-native";
+import { Alert, Linking, StyleSheet, ToastAndroid, View } from "react-native";
 
 // @ts-ignore
 import AweIcon from 'react-native-vector-icons/FontAwesome'
 
 import Card from "./Card";
+import { clearStore } from "../../scripts/store";
 
 const styles = StyleSheet.create({
     container: {
@@ -23,6 +24,7 @@ const UpdateIcon = () => { return <AweIcon name="hand-o-up" size={30} color="#40
 const ExcelIcon = () => { return <AweIcon name="file-excel-o" size={30} color="#67c23a" /> }
 const LicenseIcon = () => { return <AweIcon name="file-text-o" size={30} color="#e6a23c" /> }
 const ContactIcon = () => { return <AweIcon name="envelope-o" size={30} color="#f56c6c" /> }
+const ClearIcon = () => { return <AweIcon name="recycle" size={30} color="#f56c6c" /> }
 
 const SettingsHome = ({navigation}: any) => {
     return (
@@ -53,6 +55,26 @@ const SettingsHome = ({navigation}: any) => {
                                   ToastAndroid.show('Fail to open default browser!', ToastAndroid.SHORT)
                               }
                           })
+                  }}/>
+
+            <Card title="Clear Stored Data" icon={<ClearIcon/>}
+                  onClick={() => {
+                      Alert.alert(
+                          'Notice',
+                          'This operation cannot be undone, are you sure to continue?',
+                          [
+                              { text: 'cancel', onPress: () => {  } },
+                              {
+                                  text: 'confirm',
+                                  onPress: () => {
+                                      clearStore('All')
+                                          .then((result) => {
+                                              ToastAndroid.show(result ? 'success' : 'fail', ToastAndroid.SHORT)
+                                          })
+                                  }
+                              },
+                          ]
+                      )
                   }}/>
         </View>
     )
