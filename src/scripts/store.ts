@@ -184,7 +184,7 @@ const dateJs = (need: 'YEAR' | 'MONTH' | 'WEEK' | 'DAY') => {
         case "YEAR":
             return new Date().getFullYear()
         case "MONTH":
-            return new Date().getMonth()
+            return new Date().getMonth() + 1
         case "WEEK":
             return -1
         case "DAY":
