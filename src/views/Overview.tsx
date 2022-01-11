@@ -1,21 +1,20 @@
 import React from "react";
 
-import { StyleSheet, Text, View } from "react-native";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-})
+import OverviewHome from "../components/Overview/OverviewHome";
+import BarOverview from "../components/Overview/BarOverview";
+import LineOverview from "../components/Overview/LineOverview";
+
+const OverviewTab = createNativeStackNavigator();
 
 const Overview = () => {
     return (
-        <View style={styles.container}>
-            <Text>得加钱</Text>
-        </View>
+        <OverviewTab.Navigator initialRouteName="OverviewHome">
+            <OverviewTab.Screen name="OverviewHome" component={OverviewHome} options={{ headerShown: false }} />
+            <OverviewTab.Screen name="BarOverview" component={BarOverview} />
+            <OverviewTab.Screen name="LineOverview" component={LineOverview} />
+        </OverviewTab.Navigator>
     )
 }
 
