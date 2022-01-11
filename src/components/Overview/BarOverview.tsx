@@ -1,6 +1,28 @@
 import React from "react";
 
+import { StyleSheet, View } from "react-native";
+
 import { VictoryBar, VictoryChart } from "victory-native";
+
+import DateSwitch from "./DateSwitch";
+
+const styles = StyleSheet.create({
+    container: {
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        padding: 20,
+        backgroundColor: '#eeeeee',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    chart: {
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: '#cccccc'
+    }
+})
 
 const BarOverview = () => {
     const option = {
@@ -23,9 +45,12 @@ const BarOverview = () => {
     }
 
     return (
-        <VictoryChart>
-            <VictoryBar/>
-        </VictoryChart>
+        <View style={styles.container}>
+            <VictoryChart>
+                <VictoryBar/>
+            </VictoryChart>
+            <DateSwitch type="MONTH" />
+        </View>
     )
 }
 
