@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
     }
 })
 
-const MoneyOut = () => { return <MyIcon name="money-out" size={30} color="green" /> }
-const MoneyIn = () => { return <MyIcon name="money-in" size={30} color="red" /> }
+const MoneyIn = () => { return <MyIcon name="money-in" size={30} color="#00000066" /> }
+const MoneyOut = () => { return <MyIcon name="money-out" size={30} color="#00000099" /> }
 
 const Card = (props: { title: string, icon?: JSX.Element, onClick?: Function }) => {
     return (
