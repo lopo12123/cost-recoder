@@ -26,7 +26,7 @@ const License = () => {
                 <Text>
                     { mitText }
                 </Text>
-                <Text style={{ color: '#409eff', textDecorationLine: 'underline' }}
+                <Text style={{ color: '#00000066', textDecorationLine: 'underline' }}
                       onPress={() => {
                           const url = 'https://spdx.org/licenses/MIT'
                           Linking.canOpenURL(url)
