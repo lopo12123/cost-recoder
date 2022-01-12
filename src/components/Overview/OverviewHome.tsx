@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { StyleSheet, Text, View } from "react-native";
+import { Calendar } from "react-native-calendars";
 
 // @ts-ignore
 import AweIcon from 'react-native-vector-icons/FontAwesome'
 
-import CalendarView from "./CalendarView";
 import Card from "./Card";
 
 const styles = StyleSheet.create({
@@ -22,6 +22,10 @@ const styles = StyleSheet.create({
         width: '100%',
         flex: 1,
     },
+    table: {
+        width: '100%',
+        height: 100,
+    },
     buttonGroup: {
         width: '100%',
         height: 50,
@@ -37,10 +41,29 @@ const LineIcon = () => { return <AweIcon name="line-chart" size={25} color="#67c
 const PieIcon = () => { return <AweIcon name="pie-chart" size={25} color="#e6a23c" /> }
 
 const OverviewHome = ({navigation}: any) => {
+    const date = new Date()
+    const todayString = `${
+        date.getFullYear()
+    }-${
+        (date.getMonth()+1) < 10 ? '0'+ (date.getMonth()+1) : (date.getMonth()+1)
+    }-${
+        date.getDate() < 10 ? '0'+date.getDate() : date.getDate()
+    }`
+    const [highlightDay, setHighlight] = useState(todayString)
+
     return (
         <View style={styles.container}>
             <View style={styles.calendar}>
-                <CalendarView />
+                <Calendar markedDates={{ [highlightDay]: { selected: true } }}
+                          hideDayNames={true} showWeekNumbers={false}
+                          onDayPress={(day) => {
+                              setHighlight(day.dateString)
+                              // 更新下方表格数据
+                          }}/>
+            </View>
+
+            <View style={styles.table}>
+                <Text>222</Text>
             </View>
 
             <View style={styles.buttonGroup}>
