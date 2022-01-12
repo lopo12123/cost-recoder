@@ -15,9 +15,9 @@ import { ToastAndroid } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
-const RecordIcon = ({ focused }: { focused: boolean }) => { return <AweIcon name="money" size={20} color={focused ? "#4f8ef7" : "#999999"} /> }
-const OverviewIcon = ({ focused }: { focused: boolean }) => { return <AweIcon name="bar-chart" size={20} color={focused ? "#4f8ef7" : "#999999"} /> }
-const SettingIcon = ({ focused }: { focused: boolean }) => { return <AweIcon name="gears" size={20} color={focused ? "#4f8ef7" : "#999999"} /> }
+const RecordIcon = ({ focused }: { focused: boolean }) => { return <AweIcon name="money" size={20} color={focused ? "#00000099" : "#00000066"} /> }
+const OverviewIcon = ({ focused }: { focused: boolean }) => { return <AweIcon name="bar-chart" size={20} color={focused ? "#00000099" : "#00000066"} /> }
+const SettingIcon = ({ focused }: { focused: boolean }) => { return <AweIcon name="gears" size={20} color={focused ? "#00000099" : "#00000066"} /> }
 
 const App = () => {
     // create the storage if not exist
@@ -35,9 +35,9 @@ const App = () => {
     return (
         <NavigationContainer>
             <Tab.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
-                <Tab.Screen name="Record" component={Record} options={{ tabBarIcon: RecordIcon }} />
-                <Tab.Screen name="Overview" component={Overview} options={{ tabBarIcon: OverviewIcon }} />
-                <Tab.Screen name="Settings" component={Settings} options={{ tabBarIcon: SettingIcon }} />
+                <Tab.Screen name="Record" component={Record} options={{ tabBarIcon: RecordIcon, tabBarActiveTintColor: '#00000099', tabBarInactiveTintColor: '#00000066' }} />
+                <Tab.Screen name="Overview" component={Overview} options={{ tabBarIcon: OverviewIcon, tabBarActiveTintColor: '#00000099', tabBarInactiveTintColor: '#00000066' }} />
+                <Tab.Screen name="Settings" component={Settings} options={{ tabBarIcon: SettingIcon, tabBarActiveTintColor: '#00000099', tabBarInactiveTintColor: '#00000066' }} />
             </Tab.Navigator>
         </NavigationContainer>
     );
