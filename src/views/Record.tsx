@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
     },
 })
 
-const AlipayIcon = () => { return <AntIcon name="alipay-circle" size={30} color="#000000cc" /> }
-const WeChatIcon = () => { return <AntIcon name="wechat" size={30} color="#00000099" /> }
-const BankIcon = () => { return <AntIcon name="bank" size={30} color="#00000066" /> }
-const CashIcon = () => { return <AntIcon name="wallet" size={30} color="#00000033" /> }
+const AlipayIcon = () => { return <AntIcon name="alipay-circle" size={30} color="#00000099" /> }
+const WeChatIcon = () => { return <AntIcon name="wechat" size={30} color="#00000066" /> }
+const BankIcon = () => { return <AntIcon name="bank" size={30} color="#00000099" /> }
+const CashIcon = () => { return <AntIcon name="wallet" size={30} color="#00000066" /> }
 
 const Record = () => {
     const [visible, setVisible] = useState(false)

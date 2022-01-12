@@ -16,19 +16,68 @@ const styles = StyleSheet.create({
         backgroundColor: '#eeeeee',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'flex-start'
+        justifyContent: 'space-evenly'
     },
     calendar: {
         width: '100%',
         flex: 1,
     },
     table: {
+        position: 'relative',
         width: '100%',
-        height: 100,
+        height: 80,
+        marginTop: 10,
+    },
+    total: {
+        position: 'absolute',
+        width: '50%',
+        height: 80,
+        top: 0,
+        left: 0,
+        backgroundColor: '#ffffff',
+        borderRightWidth: 1,
+        borderColor: '#00000011',
+        borderTopLeftRadius: 20,
+        borderBottomLeftRadius: 20,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-evenly'
+    },
+    in: {
+        position: 'absolute',
+        width: '50%',
+        height: 40,
+        top: 0,
+        right: 0,
+        backgroundColor: '#ffffff',
+        borderBottomWidth: 1,
+        borderColor: '#00000011',
+        borderTopRightRadius: 20,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly'
+    },
+    out: {
+        position: 'absolute',
+        width: '50%',
+        height: 40,
+        top: 40,
+        right: 0,
+        backgroundColor: '#ffffff',
+        borderBottomRightRadius: 20,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly'
+    },
+    txt: {
+        fontFamily: 'cursive'
     },
     buttonGroup: {
         width: '100%',
         height: 50,
+        marginTop: 10,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -36,9 +85,9 @@ const styles = StyleSheet.create({
     }
 })
 
-const BarIcon = () => { return <AweIcon name="bar-chart" size={25} color="#f56c6c" /> }
-const LineIcon = () => { return <AweIcon name="line-chart" size={25} color="#67c23a" /> }
-const PieIcon = () => { return <AweIcon name="pie-chart" size={25} color="#e6a23c" /> }
+const BarIcon = () => { return <AweIcon name="bar-chart" size={25} color="#00000099" /> }
+const LineIcon = () => { return <AweIcon name="line-chart" size={25} color="#00000066" /> }
+const PieIcon = () => { return <AweIcon name="pie-chart" size={25} color="#00000033" /> }
 
 const OverviewHome = ({navigation}: any) => {
     const date = new Date()
@@ -54,8 +103,16 @@ const OverviewHome = ({navigation}: any) => {
     return (
         <View style={styles.container}>
             <View style={styles.calendar}>
-                <Calendar markedDates={{ [highlightDay]: { selected: true } }}
+                <Calendar markedDates={{ [highlightDay]: { selected: true, selectedColor: '#00000066' } }}
                           hideDayNames={true} showWeekNumbers={false}
+                          theme={{
+                              todayTextColor: '#000000cc',
+                              dayTextColor: '#00000099',
+                              textDisabledColor: '#00000033',
+                              textMonthFontFamily: 'cursive',
+                              textDayFontFamily: 'cursive',
+                              arrowColor: '#00000066'
+                          }}
                           onDayPress={(day) => {
                               setHighlight(day.dateString)
                               // 更新下方表格数据
@@ -63,7 +120,18 @@ const OverviewHome = ({navigation}: any) => {
             </View>
 
             <View style={styles.table}>
-                <Text>222</Text>
+                <View style={styles.total}>
+                    <Text style={styles.txt}>total</Text>
+                    <Text style={styles.txt}>1000</Text>
+                </View>
+                <View style={styles.in}>
+                    <Text style={styles.txt}>in</Text>
+                    <Text style={styles.txt}>500</Text>
+                </View>
+                <View style={styles.out}>
+                    <Text style={styles.txt}>out</Text>
+                    <Text style={styles.txt}>500</Text>
+                </View>
             </View>
 
             <View style={styles.buttonGroup}>
