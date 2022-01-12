@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
     }
 })
 
-const UpdateIcon = () => { return <AweIcon name="hand-o-up" size={30} color="#409eff" /> }
-const ExcelIcon = () => { return <AweIcon name="file-excel-o" size={30} color="#67c23a" /> }
-const LicenseIcon = () => { return <AweIcon name="file-text-o" size={30} color="#e6a23c" /> }
-const ContactIcon = () => { return <AweIcon name="envelope-o" size={30} color="#f56c6c" /> }
-const ClearIcon = () => { return <AweIcon name="recycle" size={30} color="#909399" /> }
+const UpdateIcon = () => { return <AweIcon name="hand-o-up" size={30} color="#000000ff" /> }
+const ExcelIcon = () => { return <AweIcon name="file-excel-o" size={30} color="#000000cc" /> }
+const LicenseIcon = () => { return <AweIcon name="file-text-o" size={30} color="#00000099" /> }
+const ContactIcon = () => { return <AweIcon name="envelope-o" size={30} color="#00000066" /> }
+const ClearIcon = () => { return <AweIcon name="recycle" size={30} color="#00000033" /> }
 
 const SettingsHome = ({navigation}: any) => {
     return (
